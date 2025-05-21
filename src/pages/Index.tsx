@@ -1,13 +1,18 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { PageLayout } from "@/components/page-layout";
+import { HeroSection } from "@/components/hero-section";
+import { IntroSection } from "@/components/intro-section";
+import { FeaturesSection } from "@/components/features-section";
+import { CTASection } from "@/components/cta-section";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <PageLayout>
+      <HeroSection />
+      <IntroSection />
+      <FeaturesSection />
+      <CTASection />
+    </PageLayout>
   );
 };
 
