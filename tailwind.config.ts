@@ -130,6 +130,78 @@ export default {
             opacity: '1'
           }
         },
+        'image-reveal': {
+          '0%': {
+            opacity: '0',
+            transform: 'scale(0.8) rotateX(45deg)'
+          },
+          '50%': {
+            opacity: '0.5',
+            transform: 'scale(0.9) rotateX(22deg)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'scale(1) rotateX(0deg)'
+          }
+        },
+        'slide-in-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(50px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          }
+        },
+        'table-glow': {
+          '0%': {
+            box-shadow: '0 0 5px rgba(212, 185, 140, 0.3)'
+          },
+          '50%': {
+            box-shadow: '0 0 20px rgba(212, 185, 140, 0.6)'
+          },
+          '100%': {
+            box-shadow: '0 0 5px rgba(212, 185, 140, 0.3)'
+          }
+        },
+        'input-glow': {
+          '0%': {
+            box-shadow: '0 0 0 0 rgba(212, 185, 140, 0.4)'
+          },
+          '70%': {
+            box-shadow: '0 0 0 10px rgba(212, 185, 140, 0)'
+          },
+          '100%': {
+            box-shadow: '0 0 0 0 rgba(212, 185, 140, 0)'
+          }
+        },
+        'bounce-gentle': {
+          '0%, 100%': {
+            transform: 'translateY(0)',
+            animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
+          },
+          '50%': {
+            transform: 'translateY(-5px)',
+            animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)'
+          }
+        },
+        'float': {
+          '0%, 100%': {
+            transform: 'translateY(0px)'
+          },
+          '50%': {
+            transform: 'translateY(-10px)'
+          }
+        },
+        'shimmer': {
+          '0%': {
+            backgroundPosition: '-200% 0'
+          },
+          '100%': {
+            backgroundPosition: '200% 0'
+          }
+        }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -138,7 +210,18 @@ export default {
         'fade-in-right': 'fade-in-right 0.7s ease-out forwards',
         'fade-in-left': 'fade-in-left 0.7s ease-out forwards',
         'scale-up': 'scale-up 0.5s ease-out forwards',
-			}
+        'image-reveal': 'image-reveal 1s ease-out forwards',
+        'slide-in-up': 'slide-in-up 0.8s ease-out forwards',
+        'table-glow': 'table-glow 2s ease-in-out infinite',
+        'input-glow': 'input-glow 0.6s ease-out',
+        'bounce-gentle': 'bounce-gentle 2s infinite',
+        'float': 'float 3s ease-in-out infinite',
+        'shimmer': 'shimmer 2s infinite linear'
+			},
+      scale: {
+        '102': '1.02',
+        '105': '1.05'
+      }
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

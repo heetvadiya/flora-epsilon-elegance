@@ -115,4 +115,109 @@
   .animate-delay-500 {
     animation-delay: 500ms;
   }
+
+  /* Beautiful Image Animations */
+  .image-reveal {
+    @apply opacity-0 scale-95 transition-all duration-700 ease-out;
+  }
+
+  .image-reveal.animate-in {
+    @apply opacity-100 scale-100;
+  }
+
+  .image-hover-effect {
+    @apply transition-all duration-500 ease-out transform hover:scale-105 hover:shadow-2xl hover:brightness-110;
+  }
+
+  .image-slide-up {
+    @apply opacity-0 translate-y-8 transition-all duration-800 ease-out;
+  }
+
+  .image-slide-up.animate-in {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .image-float {
+    @apply transition-transform duration-1000 ease-in-out;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Beautiful Table Animations */
+  .table-fade-in {
+    @apply opacity-0 translate-y-4 transition-all duration-600 ease-out;
+  }
+
+  .table-fade-in.animate-in {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .table-row-slide {
+    @apply opacity-0 translate-x-4 transition-all duration-500 ease-out;
+  }
+
+  .table-row-slide.animate-in {
+    @apply opacity-100 translate-x-0;
+  }
+
+  .table-hover-glow {
+    @apply transition-all duration-300 ease-out hover:bg-primary/5 hover:shadow-lg;
+  }
+
+  /* Beautiful Input Animations */
+  .input-focus-glow {
+    @apply transition-all duration-300 ease-out focus:scale-105 focus:shadow-lg focus:shadow-primary/20;
+  }
+
+  .input-slide-in {
+    @apply opacity-0 translate-x-4 transition-all duration-500 ease-out;
+  }
+
+  .input-slide-in.animate-in {
+    @apply opacity-100 translate-x-0;
+  }
+
+  .input-bounce-focus {
+    @apply transition-all duration-200 ease-out focus:scale-105;
+    animation: subtle-bounce 0.4s ease-out;
+  }
+
+  .textarea-expand {
+    @apply transition-all duration-300 ease-out focus:scale-102 focus:shadow-xl focus:shadow-primary/10;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes subtle-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-2px);
+  }
+  60% {
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-effect {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
 }
