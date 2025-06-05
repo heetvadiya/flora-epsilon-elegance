@@ -1,22 +1,14 @@
-# Welcome to your Lovable project
+# Welcome to your project
 
 ## Project info
-
-**URL**: https://lovable.dev/projects/0a9b04e4-145e-4772-aed0-c027f00bc78c
 
 ## How can I edit this code?
 
 There are several ways of editing your application.
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/0a9b04e4-145e-4772-aed0-c027f00bc78c) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
 **Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+If you want to work locally using your own IDE, you can clone this repo and push changes. 
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
@@ -61,13 +53,8 @@ This project is built with:
 - Tailwind CSS
 
 ## How can I deploy this project?
+- yet to decide with client 
 
-Simply open [Lovable](https://lovable.dev/projects/0a9b04e4-145e-4772-aed0-c027f00bc78c) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
+## Can I connect a custom domain to my project?
 
 Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
