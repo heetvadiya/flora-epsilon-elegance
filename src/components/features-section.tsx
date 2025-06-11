@@ -1,11 +1,11 @@
 
 import { FeatureCard } from "./feature-card";
 import { Droplet, Shield, X, CheckSquare, Volume2, Flame, Shield as ShieldIcon, Brush } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useScrollAnimation, useStaggeredAnimation } from "@/hooks/useScrollAnimation";
 
 export function FeaturesSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+  const { elementRef, isVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { containerRef, visibleItems } = useStaggeredAnimation(9, 150);
 
   const features = [
     {
@@ -55,43 +55,32 @@ export function FeaturesSection() {
     },
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} className="section-padding bg-muted/50 perspective-1000" id="features">
+    <section ref={elementRef} className="section-padding bg-muted/50 perspective-1000" id="features">
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className={`text-3xl md:text-4xl font-serif mb-4 ${isVisible ? 'layer-center' : 'opacity-0'}`}>
+          <h2 className={`text-3xl md:text-4xl font-serif mb-4 transform-gpu ${isVisible ? 'scroll-reveal-fade is-visible delay-100' : 'scroll-reveal-fade'}`}>
             Exceptional Features
           </h2>
-          <p className={`text-muted-foreground ${isVisible ? 'layer-center' : 'opacity-0'}`} style={{ animationDelay: "300ms" }}>
+          <p className={`text-muted-foreground transform-gpu ${isVisible ? 'scroll-reveal-fade is-visible delay-300' : 'scroll-reveal-fade'}`}>
             FLORA SPC flooring combines cutting-edge technology with timeless design to create a product that excels in performance and aesthetics.
           </p>
         </div>
 
-        <div className={`motion-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${isVisible ? 'animate-in' : ''}`}>
+        <div ref={containerRef} className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transform-gpu ${isVisible ? 'product-grid delay-600' : 'opacity-0'}`}>
           {features.map((feature, index) => (
-            <div key={feature.title} className="motion-grid-item" style={{ animationDelay: `${index * 150 + 600}ms` }}>
+            <div 
+              key={feature.title} 
+              className={`transform-gpu ${
+                visibleItems.has(index) ? 'product-card-stagger' : 'opacity-0'
+              }`}
+              style={{ animationDelay: `${index * 150 + 800}ms` }}
+            >
               <FeatureCard
                 icon={feature.icon}
                 title={feature.title}
                 description={feature.description}
-                className="pulse-glow dynamic-image"
+                className="product-hover luxury-glow"
               />
             </div>
           ))}

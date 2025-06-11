@@ -88,186 +88,214 @@
     @apply py-16 px-6 md:px-12 lg:px-24;
   }
 
-  .transition-transform-opacity {
-    @apply transition-all duration-300 ease-in-out;
+  /* Cinematic hero animations */
+  .hero-cinematic {
+    animation: heroCinematic 2s ease-out forwards;
   }
 
-  .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  .hero-text-reveal {
+    opacity: 0;
+    transform: translateY(30px) blur(4px);
+    animation: heroTextReveal 1.2s ease-out forwards;
   }
 
-  .animate-delay-100 {
-    animation-delay: 100ms;
+  .hero-bg-pan {
+    animation: heroBgPan 8s ease-in-out infinite alternate;
   }
 
-  .animate-delay-200 {
-    animation-delay: 200ms;
+  /* Product motion grids */
+  .product-grid {
+    opacity: 0;
+    animation: productGridEnter 1s ease-out forwards;
   }
 
-  .animate-delay-300 {
-    animation-delay: 300ms;
+  .product-card-stagger {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+    animation: productCardStagger 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
 
-  .animate-delay-400 {
-    animation-delay: 400ms;
+  /* Layer stacking animations */
+  .layer-stack-left {
+    opacity: 0;
+    transform: translateX(-200px) rotateY(15deg) scale(0.8);
+    animation: layerStackLeft 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   }
 
-  .animate-delay-500 {
-    animation-delay: 500ms;
+  .layer-stack-right {
+    opacity: 0;
+    transform: translateX(200px) rotateY(-15deg) scale(0.8);
+    animation: layerStackRight 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   }
 
-  /* Advanced Motion Grid Animations */
-  .motion-grid {
-    @apply opacity-0 transition-all duration-1000 ease-out;
-    transform: scale(0.8) rotateY(15deg);
+  .layer-stack-center {
+    opacity: 0;
+    transform: translateY(-80px) scale(0.9);
+    animation: layerStackCenter 1.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   }
 
-  .motion-grid.animate-in {
-    @apply opacity-100;
-    transform: scale(1) rotateY(0deg);
+  /* Scroll reveal animations */
+  .scroll-reveal-fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  .motion-grid-item {
-    @apply transition-all duration-700 ease-out;
-    transform: translateZ(0);
+  .scroll-reveal-fade.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
-  .motion-grid-item:nth-child(odd) {
-    @apply opacity-0;
-    transform: translateX(-100px) rotateX(45deg) scale(0.6);
-    animation: slideInFromLeft 1.2s ease-out forwards;
+  .scroll-reveal-slide-left {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  .motion-grid-item:nth-child(even) {
-    @apply opacity-0;
-    transform: translateX(100px) rotateX(-45deg) scale(0.6);
-    animation: slideInFromRight 1.2s ease-out forwards;
+  .scroll-reveal-slide-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
   }
 
-  /* Layered Stacking Animations */
-  .layer-stack-container {
-    @apply relative perspective-1000;
+  .scroll-reveal-slide-right {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  .layer-left {
-    @apply opacity-0;
-    transform: translateX(-200px) rotateY(45deg) scale(0.7);
-    animation: stackFromLeft 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  .scroll-reveal-slide-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
   }
 
-  .layer-right {
-    @apply opacity-0;
-    transform: translateX(200px) rotateY(-45deg) scale(0.7);
-    animation: stackFromRight 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-  }
-
-  .layer-center {
-    @apply opacity-0;
-    transform: translateY(-100px) scale(0.8);
-    animation: stackCenter 1.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-  }
-
-  /* Product Photo Reveals */
-  .product-reveal-left {
-    @apply opacity-0 overflow-hidden;
-    transform: translateX(-150px) rotateY(90deg) scale(0.5);
-    animation: revealFromLeft 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  }
-
-  .product-reveal-right {
-    @apply opacity-0 overflow-hidden;
-    transform: translateX(150px) rotateY(-90deg) scale(0.5);
-    animation: revealFromRight 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  }
-
-  /* Dynamic Image Effects */
-  .dynamic-image {
-    @apply transition-all duration-700 ease-out transform-gpu;
-  }
-
-  .dynamic-image:hover {
-    transform: scale(1.08) rotateZ(2deg) translateY(-8px);
-    filter: brightness(1.1) contrast(1.05) saturate(1.1);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-  }
-
-  /* Enhanced Table Animations */
-  .table-matrix {
-    @apply opacity-0;
-    animation: matrixReveal 2s ease-out forwards;
-  }
-
-  .table-row-wave {
-    @apply opacity-0;
-    transform: translateY(30px) rotateX(45deg);
-  }
-
-  .table-row-wave.animate-in {
-    @apply opacity-100;
-    transform: translateY(0) rotateX(0deg);
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  /* Advanced Input Animations */
-  .input-morph {
-    @apply transition-all duration-500 ease-out;
-    transform: perspective(1000px) rotateX(0deg);
-  }
-
-  .input-morph:focus {
-    transform: perspective(1000px) rotateX(-5deg) scale(1.02);
-    box-shadow: 0 20px 40px rgba(212, 185, 140, 0.3);
-  }
-
-  .input-wave-effect {
+  /* Luxury hover effects */
+  .luxury-button {
     position: relative;
     overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .input-wave-effect::before {
+  .luxury-button::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(212, 185, 140, 0.4), transparent);
-    transition: left 0.8s ease-out;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s ease-out;
   }
 
-  .input-wave-effect:focus::before {
+  .luxury-button:hover::before {
     left: 100%;
   }
 
-  /* Parallax Layers */
-  .parallax-layer {
-    @apply transition-transform duration-1000 ease-out;
+  .luxury-button:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
   }
 
-  .parallax-fast {
-    transform: translateZ(0) translateY(calc(var(--scroll) * -0.5px));
+  /* Product hover effects */
+  .product-hover {
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .parallax-slow {
-    transform: translateZ(0) translateY(calc(var(--scroll) * -0.2px));
+  .product-hover:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
   }
 
-  /* Floating Elements */
-  .float-dynamic {
-    animation: floatDynamic 4s ease-in-out infinite;
+  .product-hover:hover .product-image {
+    transform: scale(1.1);
   }
 
-  .float-reverse {
-    animation: floatReverse 3.5s ease-in-out infinite;
+  /* Theme transition */
+  .theme-transition {
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  /* Pulsing Glow Effects */
-  .pulse-glow {
-    animation: pulseGlow 3s ease-in-out infinite;
+  /* Floating elements */
+  .float-gentle {
+    animation: floatGentle 4s ease-in-out infinite;
   }
 
-  .pulse-glow-intense {
-    animation: pulseGlowIntense 2s ease-in-out infinite;
+  .float-gentle-reverse {
+    animation: floatGentleReverse 3.5s ease-in-out infinite;
+  }
+
+  /* Timeline animations */
+  .timeline-item {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .timeline-item.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .timeline-connector {
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .timeline-connector.is-visible {
+    width: 100%;
+  }
+
+  /* Gallery animations */
+  .gallery-item {
+    opacity: 0;
+    transform: scale(0.8) rotate(3deg);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .gallery-item.is-visible {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+  /* Lightbox animations */
+  .lightbox-enter {
+    opacity: 0;
+    transform: scale(0.8);
+    animation: lightboxEnter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .lightbox-exit {
+    animation: lightboxExit 0.3s ease-out forwards;
+  }
+
+  /* Navigation animations */
+  .nav-link {
+    position: relative;
+    transition: all 0.3s ease-out;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Clip path animations */
+  .clip-reveal {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    transition: clip-path 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .clip-reveal.is-visible {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
   /* Perspective utilities */
@@ -283,77 +311,69 @@
     transform: translateZ(0);
     backface-visibility: hidden;
   }
+
+  /* Luxury glow effects */
+  .luxury-glow {
+    box-shadow: 0 0 20px rgba(212, 185, 140, 0.3);
+    transition: all 0.4s ease-out;
+  }
+
+  .luxury-glow:hover {
+    box-shadow: 0 0 40px rgba(212, 185, 140, 0.6);
+  }
 }
 
-/* Advanced Keyframe Animations */
-@keyframes slideInFromLeft {
+/* Keyframe Animations */
+@keyframes heroCinematic {
   0% {
     opacity: 0;
-    transform: translateX(-100px) rotateX(45deg) scale(0.6);
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes heroTextReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) blur(0px);
+  }
+}
+
+@keyframes heroBgPan {
+  0% {
+    transform: scale(1) translateX(0);
+  }
+  100% {
+    transform: scale(1.05) translateX(-20px);
+  }
+}
+
+@keyframes productGridEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) rotateY(15deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+  }
+}
+
+@keyframes productCardStagger {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
   }
   70% {
     opacity: 0.8;
-    transform: translateX(10px) rotateX(-5deg) scale(1.05);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) rotateX(0deg) scale(1);
-  }
-}
-
-@keyframes slideInFromRight {
-  0% {
-    opacity: 0;
-    transform: translateX(100px) rotateX(-45deg) scale(0.6);
-  }
-  70% {
-    opacity: 0.8;
-    transform: translateX(-10px) rotateX(5deg) scale(1.05);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) rotateX(0deg) scale(1);
-  }
-}
-
-@keyframes stackFromLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-200px) rotateY(45deg) scale(0.7);
-  }
-  50% {
-    opacity: 0.7;
-    transform: translateX(-20px) rotateY(15deg) scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) rotateY(0deg) scale(1);
-  }
-}
-
-@keyframes stackFromRight {
-  0% {
-    opacity: 0;
-    transform: translateX(200px) rotateY(-45deg) scale(0.7);
-  }
-  50% {
-    opacity: 0.7;
-    transform: translateX(20px) rotateY(-15deg) scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) rotateY(0deg) scale(1);
-  }
-}
-
-@keyframes stackCenter {
-  0% {
-    opacity: 0;
-    transform: translateY(-100px) scale(0.8);
-  }
-  60% {
-    opacity: 0.8;
-    transform: translateY(10px) scale(1.05);
+    transform: translateY(-5px) scale(1.02);
   }
   100% {
     opacity: 1;
@@ -361,111 +381,119 @@
   }
 }
 
-@keyframes revealFromLeft {
+@keyframes layerStackLeft {
   0% {
     opacity: 0;
-    transform: translateX(-150px) rotateY(90deg) scale(0.5);
+    transform: translateX(-200px) rotateY(15deg) scale(0.8);
   }
   60% {
-    opacity: 0.9;
-    transform: translateX(15px) rotateY(-10deg) scale(1.1);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) rotateY(0deg) scale(1);
-  }
-}
-
-@keyframes revealFromRight {
-  0% {
-    opacity: 0;
-    transform: translateX(150px) rotateY(-90deg) scale(0.5);
-  }
-  60% {
-    opacity: 0.9;
-    transform: translateX(-15px) rotateY(10deg) scale(1.1);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) rotateY(0deg) scale(1);
-  }
-}
-
-@keyframes matrixReveal {
-  0% {
-    opacity: 0;
-    transform: matrix3d(0.7, 0, 0, 0, 0, 0.7, 0, 0, 0, 0, 1, 0, 0, 50, 0, 1);
-  }
-  50% {
     opacity: 0.8;
-    transform: matrix3d(1.1, 0, 0, 0, 0, 1.1, 0, 0, 0, 0, 1, 0, 0, -10, 0, 1);
+    transform: translateX(10px) rotateY(-2deg) scale(1.02);
   }
   100% {
     opacity: 1;
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    transform: translateX(0) rotateY(0deg) scale(1);
   }
 }
 
-@keyframes floatDynamic {
+@keyframes layerStackRight {
+  0% {
+    opacity: 0;
+    transform: translateX(200px) rotateY(-15deg) scale(0.8);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateX(-10px) rotateY(2deg) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg) scale(1);
+  }
+}
+
+@keyframes layerStackCenter {
+  0% {
+    opacity: 0;
+    transform: translateY(-80px) scale(0.9);
+  }
+  70% {
+    opacity: 0.9;
+    transform: translateY(5px) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes floatGentle {
   0%, 100% {
     transform: translateY(0px) rotateZ(0deg);
   }
   25% {
-    transform: translateY(-15px) rotateZ(1deg);
+    transform: translateY(-8px) rotateZ(0.5deg);
   }
   50% {
-    transform: translateY(-8px) rotateZ(0deg);
+    transform: translateY(-4px) rotateZ(0deg);
   }
   75% {
-    transform: translateY(-20px) rotateZ(-1deg);
+    transform: translateY(-12px) rotateZ(-0.5deg);
   }
 }
 
-@keyframes floatReverse {
+@keyframes floatGentleReverse {
   0%, 100% {
     transform: translateY(0px) rotateZ(0deg);
   }
   33% {
-    transform: translateY(12px) rotateZ(-1deg);
+    transform: translateY(6px) rotateZ(-0.3deg);
   }
   66% {
-    transform: translateY(-5px) rotateZ(1deg);
+    transform: translateY(-3px) rotateZ(0.3deg);
   }
 }
 
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(212, 185, 140, 0.3);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(212, 185, 140, 0.6);
-    transform: scale(1.02);
-  }
-}
-
-@keyframes pulseGlowIntense {
-  0%, 100% {
-    box-shadow: 0 0 30px rgba(212, 185, 140, 0.5);
-    filter: brightness(1);
-  }
-  50% {
-    box-shadow: 0 0 60px rgba(212, 185, 140, 0.8);
-    filter: brightness(1.1);
-  }
-}
-
-@keyframes shimmer {
+@keyframes lightboxEnter {
   0% {
-    background-position: -200% 0;
+    opacity: 0;
+    transform: scale(0.8);
   }
   100% {
-    background-position: 200% 0;
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-.shimmer-effect {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
+@keyframes lightboxExit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* Scroll-triggered animation delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+.delay-900 { animation-delay: 0.9s; }
+.delay-1000 { animation-delay: 1s; }
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
