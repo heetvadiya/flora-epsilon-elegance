@@ -1,9 +1,12 @@
 
 import { FeatureCard } from "./feature-card";
 import { Droplet, Shield, X, CheckSquare, Volume2, Flame, Shield as ShieldIcon, Brush } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useEffect, useRef, useState } from "react";
 
 export function FeaturesSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
   const features = [
     {
       icon: <Droplet className="h-6 w-6" />,
@@ -52,25 +55,45 @@ export function FeaturesSection() {
     },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="section-padding bg-muted/50" id="features">
+    <section ref={sectionRef} className="section-padding bg-muted/50 perspective-1000" id="features">
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-serif mb-4 opacity-0 animate-fade-in">Exceptional Features</h2>
-          <p className="text-muted-foreground opacity-0 animate-fade-in" style={{ animationDelay: "100ms" }}>
+          <h2 className={`text-3xl md:text-4xl font-serif mb-4 ${isVisible ? 'layer-center' : 'opacity-0'}`}>
+            Exceptional Features
+          </h2>
+          <p className={`text-muted-foreground ${isVisible ? 'layer-center' : 'opacity-0'}`} style={{ animationDelay: "300ms" }}>
             FLORA SPC flooring combines cutting-edge technology with timeless design to create a product that excels in performance and aesthetics.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={`motion-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${isVisible ? 'animate-in' : ''}`}>
           {features.map((feature, index) => (
-            <FeatureCard
-              key={feature.title}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-              delay={index * 100}
-            />
+            <div key={feature.title} className="motion-grid-item" style={{ animationDelay: `${index * 150 + 600}ms` }}>
+              <FeatureCard
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+                className="pulse-glow dynamic-image"
+              />
+            </div>
           ))}
         </div>
       </div>

@@ -15,7 +15,7 @@ export function IntroSection() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -26,10 +26,10 @@ export function IntroSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section-padding" id="about-spc">
+    <section ref={sectionRef} className="section-padding perspective-2000" id="about-spc">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="opacity-0 animate-fade-in-right">
+          <div className={`${isVisible ? 'layer-left' : ''}`} style={{ animationDelay: '200ms' }}>
             <h2 className="text-3xl md:text-4xl font-serif mb-6">
               Redefining Premium Flooring
             </h2>
@@ -39,7 +39,7 @@ export function IntroSection() {
             <p className="text-muted-foreground mb-6">
               Each FLORA plank is meticulously crafted with a rigid limestone core that provides exceptional stability and resistance to dents. Our proprietary wear layer technology ensures that your floors maintain their pristine appearance for years to come, even in high-traffic commercial environments.
             </p>
-            <Button asChild variant="outline" className="mt-2">
+            <Button asChild variant="outline" className="mt-2 pulse-glow">
               <Link to="/why-spc">
                 Discover the SPC Difference
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -47,66 +47,97 @@ export function IntroSection() {
             </Button>
           </div>
 
-          <div className="relative" style={{ animationDelay: "200ms" }}>
+          <div className="layer-stack-container relative">
+            {/* Main center image with stacking animation */}
             <div 
-              className={`aspect-square rounded-lg overflow-hidden shadow-2xl ${
-                isVisible 
-                  ? 'image-reveal animate-in image-hover-effect' 
-                  : 'image-reveal'
-              }`}
-              style={{ 
-                animationDelay: "300ms",
-                perspective: "1000px"
-              }}
-            >
-              <img
-                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop"
-                alt="Modern living room with SPC flooring"
-                className="w-full h-full object-cover transition-all duration-700 ease-out hover:scale-110 hover:brightness-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
-            </div>
-            
-            <div 
-              className={`absolute -bottom-4 -left-4 w-2/3 aspect-video rounded-lg overflow-hidden border-4 border-background shadow-2xl ${
-                isVisible 
-                  ? 'image-slide-up animate-in image-hover-effect' 
-                  : 'image-slide-up'
+              className={`aspect-square rounded-lg overflow-hidden shadow-2xl dynamic-image ${
+                isVisible ? 'layer-center' : ''
               }`}
               style={{ animationDelay: "600ms" }}
             >
               <img
+                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop"
+                alt="Modern living room with SPC flooring"
+                className="w-full h-full object-cover transition-all duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
+            </div>
+            
+            {/* Bottom left detail with product reveal animation */}
+            <div 
+              className={`absolute -bottom-4 -left-4 w-2/3 aspect-video rounded-lg overflow-hidden border-4 border-background shadow-2xl dynamic-image ${
+                isVisible ? 'product-reveal-left' : ''
+              }`}
+              style={{ animationDelay: "900ms" }}
+            >
+              <img
                 src="https://images.unsplash.com/photo-1600566753151-384129cf4e3e?q=80&w=2070&auto=format&fit=crop"
                 alt="SPC flooring detail"
-                className="w-full h-full object-cover transition-all duration-500 ease-out hover:scale-105"
+                className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 shimmer-effect opacity-0 hover:opacity-100 transition-opacity duration-300" />
             </div>
             
+            {/* Top right floating element */}
             <div 
-              className={`absolute -top-4 -right-4 w-1/2 aspect-square bg-gradient-to-br from-primary/20 to-primary/10 rounded-full -z-10 ${
-                isVisible ? 'animate-float' : ''
+              className={`absolute -top-4 -right-4 w-1/3 aspect-square rounded-lg overflow-hidden border-2 border-primary/20 shadow-xl ${
+                isVisible ? 'product-reveal-right float-dynamic' : ''
               }`}
-              style={{ animationDelay: "900ms" }}
+              style={{ animationDelay: "1200ms" }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=2070&auto=format&fit=crop"
+                alt="Premium flooring showcase"
+                className="w-full h-full object-cover dynamic-image"
+              />
+            </div>
+            
+            {/* Animated background layers */}
+            <div 
+              className={`absolute -top-8 -right-8 w-1/2 aspect-square bg-gradient-to-br from-primary/30 to-primary/10 rounded-full -z-10 pulse-glow ${
+                isVisible ? 'float-reverse' : ''
+              }`}
+              style={{ animationDelay: "1500ms" }}
             />
             
-            {/* Floating particles effect */}
+            <div 
+              className={`absolute -bottom-8 -left-8 w-1/3 aspect-square bg-gradient-to-tl from-accent/20 to-accent/5 rounded-full -z-20 ${
+                isVisible ? 'float-dynamic' : ''
+              }`}
+              style={{ animationDelay: "1800ms" }}
+            />
+            
+            {/* Dynamic floating particles */}
             <div className="absolute inset-0 pointer-events-none">
-              {[...Array(6)].map((_, i) => (
+              {[...Array(8)].map((_, i) => (
                 <div
                   key={i}
-                  className={`absolute w-2 h-2 bg-primary/30 rounded-full ${
-                    isVisible ? 'animate-bounce-gentle' : 'opacity-0'
+                  className={`absolute w-3 h-3 bg-primary/40 rounded-full ${
+                    isVisible ? (i % 2 === 0 ? 'float-dynamic' : 'float-reverse') : 'opacity-0'
                   }`}
                   style={{
-                    left: `${20 + i * 15}%`,
-                    top: `${10 + i * 12}%`,
-                    animationDelay: `${i * 200 + 1000}ms`,
-                    animationDuration: `${2 + i * 0.5}s`
+                    left: `${15 + i * 12}%`,
+                    top: `${8 + i * 10}%`,
+                    animationDelay: `${i * 300 + 2000}ms`,
+                    animationDuration: `${3 + i * 0.3}s`
                   }}
                 />
               ))}
             </div>
+
+            {/* Glowing orbs */}
+            <div 
+              className={`absolute top-1/4 left-1/4 w-4 h-4 bg-primary/60 rounded-full ${
+                isVisible ? 'pulse-glow-intense' : 'opacity-0'
+              }`}
+              style={{ animationDelay: "2200ms" }}
+            />
+            <div 
+              className={`absolute bottom-1/3 right-1/3 w-6 h-6 bg-accent/50 rounded-full ${
+                isVisible ? 'pulse-glow' : 'opacity-0'
+              }`}
+              style={{ animationDelay: "2500ms" }}
+            />
           </div>
         </div>
       </div>
