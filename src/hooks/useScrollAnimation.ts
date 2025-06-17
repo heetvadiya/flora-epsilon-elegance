@@ -18,7 +18,7 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
 
   const [isVisible, setIsVisible] = useState(false);
   const [hasTriggered, setHasTriggered] = useState(false);
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const element = elementRef.current;
@@ -55,7 +55,7 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
 
 export const useStaggeredAnimation = (itemCount: number, baseDelay: number = 100) => {
   const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
-  const containerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;

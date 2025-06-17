@@ -1,4 +1,3 @@
-
 import { FeatureCard } from "./feature-card";
 import { Droplet, Shield, X, CheckSquare, Volume2, Flame, Shield as ShieldIcon, Brush } from "lucide-react";
 import { useScrollAnimation, useStaggeredAnimation } from "@/hooks/useScrollAnimation";
@@ -56,7 +55,7 @@ export function FeaturesSection() {
   ];
 
   return (
-    <section ref={elementRef as React.RefObject<HTMLElement>} className="section-padding bg-muted/50 perspective-1000" id="features">
+    <section ref={elementRef} className="section-padding bg-muted/50 perspective-1000" id="features">
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className={`text-3xl md:text-4xl font-serif mb-4 transform-gpu ${isVisible ? 'scroll-reveal-fade is-visible delay-100' : 'scroll-reveal-fade'}`}>
@@ -67,7 +66,7 @@ export function FeaturesSection() {
           </p>
         </div>
 
-        <div ref={containerRef as React.RefObject<HTMLElement>} className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transform-gpu ${isVisible ? 'product-grid delay-600' : 'opacity-0'}`}>
+        <div ref={containerRef} className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transform-gpu ${isVisible ? 'product-grid delay-600' : 'opacity-0'}`}>
           {features.map((feature, index) => (
             <div 
               key={feature.title} 
